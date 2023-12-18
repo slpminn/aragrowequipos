@@ -59,4 +59,6 @@ package*.json
 /wp-content/themes/twenty*/
 /wp-content/astra*/
 /wp-content/cache*/
+/wp-content/wpo-cache*/
+/wp-content/wflogs/
 /wp-content/advanced-cache.php
