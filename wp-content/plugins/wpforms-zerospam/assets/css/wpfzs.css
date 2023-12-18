@@ -1,0 +1,92 @@
+.wpfzs ul {
+  padding: 0;
+  list-style-type: none;
+}
+.wpfzs a {
+  text-decoration: none;
+}
+.wpfzs hr {
+  border: 0;
+  border-top: 1px dotted #efefef;
+}
+.wpfzs img {
+  max-width: 100%;
+}
+.wpfzs .error {
+  width: 50%;
+  padding: 10px;
+  color: #d32752;
+  border-color: #d32752;
+  border-style: solid;
+}
+.wpfzs .info {
+  width: 50%;
+  padding: 10px;
+  color: #8B8000;
+  border-color: #8B8000;
+  border-style: solid;
+  border-radius: 10px;
+}
+.wpfzs .primary {
+  color: #326dee;
+}
+.wpfzs .secondary {
+  color: #1ac888;
+}
+.wpfzs .option-card {
+  display: block;
+  padding: 10px;
+  border: 3px solid #ddd;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.wpfzs .option-card .option-card-title {
+  font-size: 1rem;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+.wpfzs .option-card .option-card-body {
+  font-size: 1rem;
+}
+.wpfzs .option-card .option-card-body a {
+  text-decoration: underline;
+}
+.wpfzs .button {
+  border-radius: 20px;
+  border: 3px solid;
+  background: transparent !important;
+  transition: all 0.3s ease 0s !important;
+  color: #000;
+  padding: 10px;
+}
+.wpfzs .button-primary {
+  color: #326dee;
+  border-color: #326dee;
+  background: #326dee;
+}
+.wpfzs .button-primary:hover {
+  color: #fff;
+  border-color: #326dee;
+  background: #326dee;
+  background: #326dee !important;
+}
+.wpfzs .button-secondary {
+  color: #1ac888;
+  border-color: #1ac888;
+  background: #1ac888;
+}
+.wpfzs .button-secondary:hover {
+  color: #fff;
+  border-color: #1ac888;
+  background: #1ac888;
+  background: #1ac888 !important;
+}
+.wpfzs .option-textarea {
+  width: 50%;
+  height: 500px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 3px solid #ccc;
+  border-radius: 20px;
+  word-wrap: break-word;
+  background-color: antiquewhite;
+}

@@ -20,14 +20,11 @@
 # Configuration
 wp-config.php
 
-# Example themes
-/wp-content/themes/twenty*/
+/wp-content/uploads/
 
-# Example plugin
-/wp-content/plugins/hello.php
 
 # Uploads
-/wp-content/uploads/
+#/wp-content/uploads/
 
 # Log files
 *.log
@@ -46,3 +43,20 @@ wp-config.php
 # Note: If you wish to whitelist themes,
 # uncomment the next line
 #/wp-content/themes
+
+# Node JS
+/node_modules/
+gulpfile.js
+package*.json
+
+# Lando
+.lando.yml
+
+# Cache
+#/wp-content/*cache*/
+
+#themes
+/wp-content/themes/twenty*/
+/wp-content/astra*/
+/wp-content/cache*/
+/wp-content/advanced-cache.php

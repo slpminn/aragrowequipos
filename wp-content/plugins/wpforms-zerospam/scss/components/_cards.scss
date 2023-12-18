@@ -1,0 +1,20 @@
+.option-card {
+    display:block;
+    padding: $base-padding;
+    border: $base-border-thickness solid $base-border-color;
+    box-shadow: $base-box-shadow;
+
+    .option-card-title {
+        font-size: $base-font-size;
+        padding-bottom: $base-padding;
+        font-weight: bold;
+    }
+
+    .option-card-body {
+        font-size: $base-font-size;
+
+        a {
+            text-decoration: underline;
+        }
+    }
+}

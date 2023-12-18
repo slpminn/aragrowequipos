@@ -1,0 +1,30 @@
+# Initialize a wordpress recipe using the latest WordPress version
+  lando init \
+    --source remote \
+    --remote-url https://wordpress.org/latest.tar.gz \
+    --recipe wordpress \
+    --webroot wordpress \
+    --name rental-equipos-app
+
+# Start it up
+lando start
+
+# List information about this app
+lando info
+
+# Create a WordPress config file
+lando wp config create \
+  --dbname=wordpress \
+  --dbuser=wordpress \
+  --dbpass=wordpress \
+  --dbhost=database \
+  --path=wordpress
+
+# Install WordPress
+lando wp core install \
+  --url=https://rental-equipos-app.lndo.site/ \
+  --title="Rental Equipos App" \
+  --admin_user=admin \
+  --admin_password=password \
+  --admin_email=admin@rental-equipos-app.lndo.site \
+  --path=wordpress

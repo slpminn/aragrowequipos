@@ -1,0 +1,35 @@
+.button {
+    border-radius: $base-border-radius;
+    border: $base-border-thickness solid;
+    background: transparent !important;
+    transition: all 0.3s ease 0s !important;
+    color: #000;
+    padding: $base-padding;
+}
+
+
+.button-primary {
+    color: map-get($colors, "primary");
+    border-color: map-get($colors, "primary");
+    background: map-get($colors, "primary");
+}
+
+.button-primary:hover {
+    color: #fff;
+    border-color: map-get($colors, "primary");
+    background: map-get($colors, "primary");
+    background: map-get($colors, "primary") !important;
+}
+
+.button-secondary {
+    color: map-get($colors, "secondary");
+    border-color: map-get($colors, "secondary");
+    background: map-get($colors, "secondary");
+}
+
+.button-secondary:hover {
+    color: #fff;
+    border-color: map-get($colors, "secondary");
+    background: map-get($colors, "secondary");
+    background: map-get($colors, "secondary") !important;
+}
