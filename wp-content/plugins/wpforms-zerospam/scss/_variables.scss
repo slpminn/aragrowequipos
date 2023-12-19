@@ -32,10 +32,12 @@ $colors: (
 $base-border-radius: 20px;
 $half-border-radius: math.floor(math.div($base-border-radius,2));
 $base-border-thickness: 3px;
-$base-border-color: #ddd;
+$base-border-color: #000;
+$base-background: #fff;
 
 //PADDING
 $base-padding: 10px;
+$base-margin: 0.75rem;
 
 //BOX SHADO
 $base-box-shadow: 1px 3px 5px rgb(0,0,0,0.1);
@@ -44,12 +46,12 @@ $base-box-shadow: 1px 3px 5px rgb(0,0,0,0.1);
 $base-font-size: 1rem;
 $font-size-sm: $base-font-size * 0.75;
 $font-size-lg: $base-font-size * 1.25;
-$font-size-xlg: $base-font-size * 1.50;
-$font-size-xxlg: $base-font-size * 2;
+$font-size-xl: $base-font-size * 1.50;
+$font-size-xxl: $base-font-size * 2;
 
-@debug 'Debugging _variables.scss';
+/*@debug 'Debugging _variables.scss';
 @debug $half-border-radius;
 @debug map-get($colors, "purple");
 @debug map-has-key($colors, "secondary");
 @debug map-has-key($colors, "tertiary");
-@debug map-merge($colors, ("tertiary" : #ffc0cb));
+@debug map-merge($colors, ("tertiary" : #ffc0cb));*/

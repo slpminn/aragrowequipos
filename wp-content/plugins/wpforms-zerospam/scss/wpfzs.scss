@@ -1,15 +1,17 @@
 //You Tube channel: Net Ninja - SASS Tutorial - 9 Loops.
 
-// Variables
-@import 'variables';
-
 // functions
 @import 'functions';
 
+// Variables
+@import 'variables';
+
 .wpfzs{
 
-    // base
+    // base & layout
     @import 'base';
+    @import 'breakpoints';
+    @import 'grid';
 
     // colors & backgrounds
     @import 'colors';
