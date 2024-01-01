@@ -56,5 +56,3 @@ if ( ! defined( 'WPFORMS_ZEROSPAM_PLUGIN_FILE' ) ) {
 // Define the class and the function.
 require_once dirname( __FILE__ ) . '/src/WPForms-zerospam.php';
 wpforms_zerospam();
-
-

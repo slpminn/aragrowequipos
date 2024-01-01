@@ -22,7 +22,7 @@
 }
 
 .button-secondary {
-    color: map-get($colors, "secondary");
+    color: map-get($colors, "black");
     border-color: map-get($colors, "secondary");
     background: map-get($colors, "secondary");
 }

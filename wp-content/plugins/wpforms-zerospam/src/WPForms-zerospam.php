@@ -263,7 +263,8 @@
 			$unserialize = unserialize($value);
 			$outputString = str_replace(',', "\n", $unserialize);
 			?>
-			<textarea class="option-textarea" name="wpfzs_block_emails"><?php echo esc_attr($outputString) ?></textarea>
+
+			<!-- <textarea class="option-textarea" name="wpfzs_block_emails"><?php //echo esc_attr($outputString) ?></textarea> -->
 			<?php
 			$numberOfEmails = count(explode("\n", $outputString));
 			printf("<div class='info'>There are %s emails blocked.</div>", $numberOfEmails); 
@@ -272,10 +273,22 @@
 		public function block_domains_callback() {
 			$value = get_option('wpfzs_block_domains');
 			$unserialize = unserialize($value);
+			//var_dump($unserialize);
 			$outputString = str_replace(',', "\n", $unserialize);
+			$domains = explode(',',$unserialize);
+			
+			echo '<ul id="cbox" class="cbox">';
+			echo '<li>
+				<input type="text" class="search" name="searchInput" id="searchInput" placeholder="Search Domains" />
+				<input type=button" class="button-secondary" id="searchAdd" value="Add Domain" />
+			</li>';
+			foreach($domains as $domain) {
 			?>
-			<textarea class="option-textarea" name="wpfzs_block_domains"><?php echo esc_attr($outputString) ?></textarea>
+			<li><input type="checkbox" class="cbox-item" name="wpfzs_block_domains[]" value="<?php echo esc_attr($domain) ?>" checked><label for="ckbox"><?php echo esc_attr($domain) ?></label></li>
+    		<!--- <textarea class="option-textarea" name="wpfzs_block_domains"><?php //echo esc_attr($outputString)) ?></textarea> --->
 			<?php
+			}
+			echo '</ul>';
 			$numberOfEmails = count(explode("\n", $outputString));
 			printf("<div class='info'>There are %s domains blocked.</div>", $numberOfEmails); 
 		}
@@ -291,12 +304,24 @@
 			printf("<div class='info'>There are %s keywords blocked.</div>", $numberOfEmails); 
 		}
 
+		/**
+		 * Function: serialize_callback
+		 *  Input takes an array or a comma delimited list.
+		 * Here's what the function does:
+		 *	It checks if the input $data is an array using is_array($data). If it is an array, it removes duplicate values.
+		 *  If $data is not an array, it replaces newline characters with commas, converts the string to an array, removes duplicate values, and sorts the array.
+		 *  The unique and sorted array is then converted back to a comma-separated string.
+		 *  Finally, the resulting string is serialized using serialize().
+		 */
 		public function serialize_callback($data) {
 			error_log('Exec serialize_callback');
-
-			$inputList = preg_replace('/[\r\n]+/', ',', $data);
-			$inputArray = explode(',', $inputList);
-			$uniqueArray = array_unique($inputArray);
+			if(is_array($data)) {
+				$uniqueArray = array_unique($data);
+			} else {
+				$inputList = preg_replace('/[\r\n]+/', ',', $data);
+				$inputArray = explode(',', $inputList);
+				$uniqueArray = array_unique($inputArray);
+			}
 			sort($uniqueArray);
 			$outlist = implode(',', $uniqueArray);
 			$serializeList = serialize($outlist);
@@ -306,12 +331,12 @@
 
 		public function register_scripts() {
 			wp_register_style( 'wpfzs', WPFORMS_ZEROSPAM_PLUGIN_URL.'assets/css/wpfzs.css' );
-			wp_register_script( 'wpfzs', WPFORMS_ZEROSPAM_PLUGIN_URL.'assets/js/wpfzs.js' );
+			wp_register_script( 'wpfzs', WPFORMS_ZEROSPAM_PLUGIN_URL.'assets/js/admin/admin-wpfzs.js' );
 		}
 			
 		public function load_scripts( $hook ) {
 			// Load only on ?page= like wpfzs
-			if( strpos($hook, 'wpfzs' ) === false ) return;
+			if (is_admin()  === false ) return;
 			// Load style & scripts.
 			wp_enqueue_style( 'wpfzs' );
 			wp_enqueue_script( 'wpfzs' );	
