@@ -11,7 +11,13 @@ $(document).ready(function () {
     $('#searchInput').on('input', function () {
 
       var searchText = $(this).val().toLowerCase().trim();
-      if (isValidDomain(searchText)) $('#searchAdd').show(); else $('#searchAdd').hide(); 
+      console.log('Check class:');
+      console.log($(this).attr('class'));
+      $('#searchAdd').hide(); 
+
+      if ($(this).hasClass('domains') && isValidDomain(searchText)) $('#searchAdd').show(); 
+      else if ($(this).hasClass('emails') && isValidEmail(searchText)) $('#searchAdd').show();
+      else if ($(this).hasClass('keywords')) $('#searchAdd').show();
 
       $('input[type="checkbox"]').each(function () {
         var label = $(this).parent().text().toLowerCase();
@@ -34,7 +40,7 @@ $(document).ready(function () {
 
       var searchText = $('#searchInput').val().toLowerCase();
 
-      searchText = addAtIfNeeded(searchText);
+      if ($(this).hasClass('domains')) searchText = addAtIfNeeded(searchText);
 
       $('input[type="checkbox"]').each(function () {
           $(this).parent().show();
@@ -54,6 +60,7 @@ $(document).ready(function () {
       // Create a label for the checkbox
       var label = document.createElement('label');
       label.htmlFor = 'ckbox';
+      label.className = 'new-item';
       label.appendChild(document.createTextNode(searchText));
 
       li.appendChild(checkbox);
@@ -65,10 +72,10 @@ $(document).ready(function () {
       $(this).hide();
 
       
-      var ul = $('#cbox'); // Find UL
+      var ul = $('#cbox li:eq(0)'); // Append to secon li
 
       console.log(ul.attr('id'));
-      ul.append(li);
+      ul.after(li);
       
     });
 
@@ -93,11 +100,23 @@ $(document).ready(function () {
      * It allows for domains that start with an optional '@' symbol, followed by alphanumeric characters, 
      * dots, and hyphens, ending with a period and at least two letters for the top-level domain (TLD).
      */
-    function isValidDomain(domain) {
+    function isValidDomain(input) {
+      console.log('Checking Domain.');
       // Regular expression for a simple domain format
       var domainRegex = /^@?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
-      return domainRegex.test(domain);
+      return domainRegex.test(input);
+    }
+
+    /**
+     * This function uses a regular expression to check if the provided email follows a simple format. 
+     */
+    function isValidEmail(input) {
+      console.log('Checking Email.');
+      // Regular expression for a simple domain format
+      var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  
+      return emailRegex.test(input);
     }
     /**
      * This function will return the input string with '@' added to the beginning if it's not already present. 

@@ -261,47 +261,67 @@
 		{
 			$value = get_option('wpfzs_block_emails');
 			$unserialize = unserialize($value);
-			$outputString = str_replace(',', "\n", $unserialize);
+			$items = explode(',',$unserialize);
+			echo '<ul id="cbox" class="cbox">';
+			echo '<li>
+				<input type="text" class="search emails" name="searchInput" id="searchInput" placeholder="Search Emails" />
+				<input type=button" class="button-secondary emails" id="searchAdd" value="Add Email" />
+			</li>';
+			foreach($items as $item) {
 			?>
-
-			<!-- <textarea class="option-textarea" name="wpfzs_block_emails"><?php //echo esc_attr($outputString) ?></textarea> -->
+			<li>
+				<input type="checkbox" class="cbox-item" name="wpfzs_block_emails[]" value="<?php echo esc_attr($item) ?>" checked>
+				<label for="ckbox"><?php echo esc_attr($item) ?></label>
+			</li>
 			<?php
-			$numberOfEmails = count(explode("\n", $outputString));
-			printf("<div class='info'>There are %s emails blocked.</div>", $numberOfEmails); 
+			}
+			echo '</ul>';
+			$numberOfItems = count($items);
+			printf("<div class='info'>There are %s emails blocked.</div>", $numberOfItems); 
 		}
 
 		public function block_domains_callback() {
 			$value = get_option('wpfzs_block_domains');
 			$unserialize = unserialize($value);
-			//var_dump($unserialize);
-			$outputString = str_replace(',', "\n", $unserialize);
-			$domains = explode(',',$unserialize);
-			
+			$items = explode(',',$unserialize);		
 			echo '<ul id="cbox" class="cbox">';
 			echo '<li>
-				<input type="text" class="search" name="searchInput" id="searchInput" placeholder="Search Domains" />
-				<input type=button" class="button-secondary" id="searchAdd" value="Add Domain" />
+				<input type="text" class="search domains" name="searchInput" id="searchInput" placeholder="Search Domains" />
+				<input type=button" class="button-secondary domains" id="searchAdd" value="Add Domain" />
 			</li>';
-			foreach($domains as $domain) {
+			foreach($items as $item) {
 			?>
-			<li><input type="checkbox" class="cbox-item" name="wpfzs_block_domains[]" value="<?php echo esc_attr($domain) ?>" checked><label for="ckbox"><?php echo esc_attr($domain) ?></label></li>
-    		<!--- <textarea class="option-textarea" name="wpfzs_block_domains"><?php //echo esc_attr($outputString)) ?></textarea> --->
+			<li>
+				<input type="checkbox" class="cbox-item" name="wpfzs_block_domains[]" value="<?php echo esc_attr($item) ?>" checked>
+				<label for="ckbox"><?php echo esc_attr($item) ?></label>
+			</li>
 			<?php
 			}
 			echo '</ul>';
-			$numberOfEmails = count(explode("\n", $outputString));
-			printf("<div class='info'>There are %s domains blocked.</div>", $numberOfEmails); 
+			$numberOfItems = count($items);
+			printf("<div class='info'>There are %s domains blocked.</div>", $numberOfItems); 
 		}
 
 		public function block_keywords_callback() {
 			$value = get_option('wpfzs_block_keywords');
 			$unserialize = unserialize($value);
-			$outputString = str_replace(',', "\n", $unserialize);
+			$items = explode(',',$unserialize);
+			echo '<ul id="cbox" class="cbox">';
+			echo '<li>
+				<input type="text" class="search keywords" name="searchInput" id="searchInput" placeholder="Search Keywords" />
+				<input type=button" class="button-secondary keywords" id="searchAdd" value="Add Keyword" />
+			</li>';
+			foreach($items as $item) {
 			?>
-			<textarea class="option-textarea" name="wpfzs_block_keywords"><?php echo esc_attr($outputString) ?></textarea>
+			<li>
+				<input type="checkbox" class="cbox-item" name="wpfzs_block_keywords[]" value="<?php echo esc_attr($item) ?>" checked>
+				<label for="ckbox"><?php echo esc_attr($item) ?></label>
+			</li>
 			<?php
-			$numberOfEmails = count(explode("\n", $outputString));
-			printf("<div class='info'>There are %s keywords blocked.</div>", $numberOfEmails); 
+			}
+			echo '</ul>';
+			$numberOfItems = count($items);
+			printf("<div class='info'>There are %s keywords blocked.</div>", $numberOfItems); 
 		}
 
 		/**
