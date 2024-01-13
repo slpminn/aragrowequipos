@@ -1,0 +1,45 @@
+// STYLED CUSTOM CHECKBOXES
+
+ul.cbox {
+  list-style: none;
+  padding: 20px;
+}
+ul.cbox li{
+display: block;
+}
+
+ul.cbox li label {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Styles for the hidden default checkbox */
+ul.cbox li input[type="checkbox"].cbox-item {
+
+}
+
+/* Styles for the checkbox label (optional) */
+ul.cbox li label{
+  display: inline-block;
+  background-color: rgba(255, 255, 255, .9);
+  border: 2px solid rgba(139, 139, 139, .3);
+  color: #adadad;
+  border-radius: 15px;
+  white-space: nowrap;
+  margin: 3px 0px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s;
+  min-width: 50%;
+  font-size: medium;
+}
+
+
+/* Styles for the checkbox label (optional) */
+ul.cbox li label.new-item{
+  background-color: lightgreen;
+}

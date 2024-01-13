@@ -1,0 +1,81 @@
+.button {
+    border-radius: $base-border-radius;
+    border: $base-border-thickness solid;
+    background: transparent !important;
+    transition: all 0.3s ease 0s !important;
+    color: #000;
+    padding: $base-padding;
+}
+
+
+.button-primary {
+    color: map-get($colors, "primary");
+    border-color: map-get($colors, "primary");
+    background: map-get($colors, "primary");
+}
+
+.button-primary:hover {
+    color: #fff;
+    border-color: map-get($colors, "primary");
+    background: map-get($colors, "primary");
+    background: map-get($colors, "primary") !important;
+}
+
+.button-secondary {
+    color: map-get($colors, "black");
+    border-color: map-get($colors, "secondary");
+    background: map-get($colors, "secondary");
+}
+
+.button-secondary:hover {
+    color: #fff;
+    border-color: map-get($colors, "secondary");
+    background: map-get($colors, "secondary");
+    background: map-get($colors, "secondary") !important;
+}
+
+// @MIXIN is used to create a group of attributes that it can be
+// used in other classes.
+// We can pass parameters to the mixin function to create dynamic
+// attributes. Also you can set a default just in case that no
+// paraameter is passed.
+@mixin btn($bg-color: #e2e2e2){
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    padding: $base-padding $base-padding * 2;
+    border-radius: $base-border-radius;
+    background-color: $bg-color;
+}
+
+.btn {
+    // Mixin btn with no parameters.
+    @include btn;
+}
+
+@each $key, $val in $colors {
+    .btn-#{$key} {
+        @include btn($val); 
+        &:hover {
+            background-color: lighten($val, 15%)
+        }
+    }
+
+    .btn-outlined-#{$key} {
+        @include btn(#fff);
+        border: $base-border-thickness solid $val;
+        &:hover {
+            background-color: $val;
+        }
+    }
+
+    .btn-complement-#{$key} {
+        @include btn($val); 
+        color: light-comp($val);
+        &:hover {
+            color: $val;
+            background-color: light-comp($val);
+        }
+    }
+}

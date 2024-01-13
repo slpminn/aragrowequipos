@@ -2,10 +2,60 @@
 
 
 	/**
-	 * Main WPFormsZeroSpam class.
-	 *
-	 * @since 1.0.0
-	 */
+	* Main WPFormsZeroSpam class.
+	*
+	* @since 1.0.0
+	* 
+	*	This code is designed to integrate with the WPForms plugin and provide additional spam prevention features by blocking certain emails, domains, 
+	*	and keywords. It also offers a settings page in the WordPress admin for configuring these blocking rules.
+	*
+	* Constructor:
+	*	The class has a constructor method (__construct) that is called when an object of the class is created. This method initializes various settings, 
+	*		includes necessary files (although the includes method is currently empty), and hooks into various WordPress actions.
+	*
+	*	Hooked Actions:
+	*	The constructor hooks into several actions using add_action:
+	*		admin_init: It checks whether the required plugins (WPForms Lite and Advanced Custom Fields) are activated.
+	*		admin_menu: It creates a WordPress admin menu and sub-menus for the plugin.
+	*		admin_init: It registers settings for the plugin.
+	*		admin_enqueue_scripts: It registers and enqueues styles and scripts for the WordPress admin.
+	*		wpforms_process_validate_email, wpforms_process_validate_text, wpforms_process_validate_textarea: These actions are hooked to block certain 
+	*			email addresses, text, or textarea content during the WPForms validation process.
+	*
+	*	Menu Creation:
+	*	The create_menu method creates a WordPress admin menu and sub-menus for the plugin. It uses the add_menu_page and add_submenu_page functions.
+	*
+	*	Settings and Option Pages:
+	*
+	*		The admin_page_contents_callback, admin_page_contents_block_emails_callback, admin_page_contents_block_domains_callback, and 
+	*			admin_page_contents_block_keywords_callback methods 	define the content for various settings and option pages.
+	*		The register_settings method registers settings for the plugin using the register_setting and add_settings_field functions.
+	*	
+	*	Settings Callbacks:
+	*		The dropdown_callback, block_emails_callback, block_domains_callback, and block_keywords_callback methods are used as callbacks for the settings fields. 
+	*		They define the HTML for input fields and display information about the number of blocked items.
+	*	
+	*	Serialization Callback:
+	*		The serialize_callback method is used as a callback for sanitizing and serializing input data. It handles both array and comma-separated list formats.
+	*
+	*	Scripts and Styles:
+	*		The register_scripts, load_scripts methods are used to register and enqueue scripts and styles for the WordPress admin.
+	*
+	*	Spam Handling:
+	*		The block_email_address, block_email_text methods are hooked into WPForms validation to check and block certain email addresses or text content.
+	*		The is_domain_block, is_email_block, and is_keyword_block methods check if a domain, email, or keyword is blocked based on the plugin's settings.
+	*		The sendToSpam method modifies the email address if it matches certain criteria, effectively marking it as spam.
+	*
+	*	Plugin Activation:
+	*		The install method is intended for handling plugin installation upon activation, but it is currently empty.
+	*
+	*	Initialization:
+	*		The wpforms_zerospam function creates an instance of the WPForms_ZeroSpam class when called.
+	* 
+	* 
+	* 
+	* 
+	*/
 
 	 class WPForms_ZeroSpam {
 
@@ -40,11 +90,6 @@
 				wp_die('Error: WPForms Lite plugin is not activated. Please activate it to use this feature.');
 			}
 			
-			if (!is_plugin_active('advanced-custom-fields/acf.php')) {
-				// WPForms Lite is not activated, send an error message
-				wp_die('Error: Advance Custom Fields plugin is not activated. Please activate it to use this feature.');
-			}
-
 		}
 
 		public function create_menu() {
