@@ -1,0 +1,95 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://support.aragrow.com\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2024-01-16 00:02+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: .\n"
+
+#: General
+msgid "YES"
+msgstr "SI"
+
+msgid "NO"
+msgstr "NO"
+
+#: src/menus
+msgid "Setup"
+msgstr "Ajustes"
+
+msgid "Companies"
+msgstr "Compañía"
+
+#: src/menu/setup
+msgid "Debug is Off"
+msgstr "Apagado"
+
+msgid "Function Names"
+msgstr "Nombre de Funciónes"
+
+msgid "+ Informational"
+msgstr "+ Informativa"
+
+msgid "+ Error Only"
+msgstr "+ Solo Errores"
+
+#: src/components/Companies
+msgid "Actions"
+msgstr "Acciones"
+
+msgid "Company Active"
+msgstr "Compañía Activa"
+
+msgid "Company ID"
+msgstr "ID de la Compañía"
+
+msgid "Company Name"
+msgstr "Nombre de la Compañía"
+
+msgid "Company Status"
+msgstr "Estatus de la Compañía"
+
+msgid "Companies List"
+msgstr "Lista de Compañías"
+
+#| msgid "Edit Company"
+msgid "Edit the Company"
+msgstr "Editar la Compañia"
+
+msgid "Specialities of the Company"
+msgstr "Especialidades de la Compañía"
+
+msgid "View the Company"
+msgstr "Ver la Compañía"
+
+#: src/components/CompaniesStatuses
+msgid "Pre-Inquiry"
+msgstr "Pre-Consulta"
+
+msgid "Engagement"
+msgstr "Compromiso"
+
+msgid "Qualify Lead"
+msgstr "Venta Posible"
+
+msgid "Rejected"
+msgstr "Rechazado"
+
+msgid "Engaged"
+msgstr "Comprometido"
+
+msgid "Connected"
+msgstr "Conectado"
+
+msgid "Disqualified"
+msgstr "Descalificado"
+
+msgid "Potential Deal"
+msgstr "Venta Potencial"

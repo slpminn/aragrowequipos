@@ -1,0 +1,96 @@
+# This file is distributed under the same license as Jobs Tracker.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-11-28T09:14:32+00:00\n"
+"Report-Msgid-Bugs-To: http://support.aragrow.com\n"
+"Language: pt_AO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: gettext\n"
+"Project-Id-Version: Advanced Custom Fields\n"
+
+#: General
+
+msgid "YES"
+msgstr ""
+
+msgid "NO"
+msgstr ""
+
+#: src/menus
+
+msgid "Setup"
+msgstr ""
+
+msgid "Companies"
+msgstr ""
+
+#: src/menu/setup
+
+msgid "Debug is Off"
+msgstr ""
+
+msgid "Function Names"
+msgstr ""
+
+msgid "+ Informational"
+msgstr ""
+
+msgid "+ Error Only"
+msgstr ""
+
+#: src/components/Companies
+
+msgid "Actions"
+msgstr ""
+
+msgid "Company Active"
+msgstr ""
+
+msgid "Company ID"
+msgstr ""
+
+msgid "Company Name"
+msgstr ""
+
+msgid "Company Status"
+msgstr ""
+
+msgid "Companies List"
+msgstr ""
+
+msgid "Edit the Company"
+msgstr ""
+
+msgid "Specialities of the Company"
+msgstr ""
+
+msgid "View the Company"
+msgstr ""
+
+#: src/components/CompaniesStatuses
+
+msgid "Pre-Inquiry"
+msgstr ""
+
+msgid "Engagement"
+msgstr ""
+
+msgid "Qualify Lead"
+msgstr ""
+
+msgid "Rejected"
+msgstr ""
+
+msgid "Engaged"
+msgstr ""
+
+msgid "Connected"
+msgstr ""
+
+msgid "Disqualified"
+msgstr ""
+
+msgid "Potential Deal"
+msgstr ""
