@@ -84,7 +84,7 @@ class AboutClientsInstall {
         $charset_collate = $wpdb->get_charset_collate();
 
         $table_structure = "CREATE TABLE $table_name (
-            id INT NOT NULL AUTO_INCREMENT,
+            ID INT NOT NULL AUTO_INCREMENT,
             status_name VARCHAR(25) NOT NULL,
             status_description TEXT,
             status_active TINYINT(1)  NOT NULL DEFAULT 1,
@@ -134,15 +134,45 @@ class AboutClientsInstall {
         $charset_collate = $wpdb->get_charset_collate();
 
         $table_structure = "CREATE TABLE $table_name (
-            id INT NOT NULL AUTO_INCREMENT,
+            ID INT NOT NULL AUTO_INCREMENT,
             client_name VARCHAR(255) NOT NULL,
             client_description TEXT,
             client_active TINYINT(1)  NOT NULL DEFAULT 1,
-            client_status TINYINT(2) NOT NULL DEFAULT 1,
+            client_status_id TINYINT(2) NOT NULL DEFAULT 1,
             PRIMARY KEY (id)
         ) $charset_collate;";
 
         maybe_create_table($table_name, $table_structure);
+
+        /*
+        INSERT INTO clients (client_name, client_description)
+        VALUES
+            ('Client 1', 'Description for Client 1'),
+            ('Client 2', 'Description for Client 2'),
+            ('Client 3', 'Description for Client 3'),
+            ('Client 4', 'Description for Client 4'),
+            ('Client 5', 'Description for Client 5'),
+            ('Client 6', 'Description for Client 6'),
+            ('Client 7', 'Description for Client 7'),
+            ('Client 8', 'Description for Client 8'),
+            ('Client 9', 'Description for Client 9'),
+            ('Client 10', 'Description for Client 10'),
+            ('Client 11', 'Description for Client 11'),
+            ('Client 12', 'Description for Client 12'),
+            ('Client 13', 'Description for Client 13'),
+            ('Client 14', 'Description for Client 14'),
+            ('Client 15', 'Description for Client 15'),
+            ('Client 16', 'Description for Client 16'),
+            ('Client 17', 'Description for Client 17'),
+            ('Client 18', 'Description for Client 18'),
+            ('Client 19', 'Description for Client 19'),
+            ('Client 20', 'Description for Client 20'),
+            ('Client 21', 'Description for Client 21'),
+            ('Client 22', 'Description for Client 22'),
+            ('Client 23', 'Description for Client 23'),
+            ('Client 24', 'Description for Client 24'),
+            ('Client 25', 'Description for Client 25');
+    */
 
     }
 

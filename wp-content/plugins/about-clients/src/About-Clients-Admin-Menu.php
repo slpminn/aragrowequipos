@@ -1,5 +1,6 @@
 <?php
 
+    require_once 'About-Clients-Utilities.php';
 
 	/**
 	* Main AboutClients class.
@@ -10,7 +11,7 @@
 	* 
 	*/
 
-	 class AboutClientsAdminMenu {
+	 class AboutClientsAdminMenu extends AboutClientsUtilities{
 
 		/**
 		 * Primary class constructor.
@@ -40,42 +41,12 @@
             // Log a message to the PHP error log indicating the execution of the method.
             if(ABOUTCLIENTS_DEBUG) error_log('AboutClientsAdminMenu->createMenu()');
 
-            // Define main menu parameters.
-            $page_title = __('About Clients', 'aboutclients');
-            $menu_title = __('About Clients', 'aboutclients');
-            $menu_slug = 'aboutclients';
-            $capability = 'manage_options';
-            $function =  [$this, 'adminPageContentsCallback'];
-            $icon_url = '';
-            $position = 6;
+            require_once 'menus/main.php';
 
-            // Add main menu page.
-            add_menu_page(
-                $page_title,
-                $menu_title,
-                $capability,
-                $menu_slug,
-                $function,
-                $icon_url,
-                $position
-            );
+            require_once 'menus/setup.php';
 
-            // Define submenu parameters.
-            $sub_parent_slug = $menu_slug;
-            $sub_page_title = __('Setup', 'aboutclients');
-            $sub_menu_title = __($sub_page_title, 'aboutclients');
-            $sub_menu_slug = $sub_parent_slug.'-setup';
-            $sub_function =  [$this, 'adminPageContentsSetupCallback'];
+            require_once 'menus/clients.php';
 
-            // Add submenu page.
-            add_submenu_page(
-                $sub_parent_slug,
-                $sub_page_title,
-                $sub_menu_title,
-                $capability,
-                $sub_menu_slug,
-                $sub_function
-            );
         }
 
         /**
@@ -114,47 +85,39 @@
          */
 
          /**
-         * Admin Page Contents Callback Method.
+         * Admin Page Form Callback Method.
          *
          * Outputs the content for the About Clients admin page.
          * Logs a message to the error log indicating the execution of the method.
          */
-        public function adminPageContentsCallback() {
+        public function adminPageFormCallback() {
             // Log a message to the PHP error log indicating the execution of the method.
-            if(ABOUTCLIENTS_DEBUG) error_log('AboutClientsAdminMenu->adminPageContentsCallback()');
-
-            // Output the content for the About Clients admin page.
-            ?>
-            <div class="wrap aboutclients">
-                <h2 class="aboutclients primary"><?php echo __('About Clients', 'aboutclients') ?></h2>
-                <h3>About Clients is a plugin designed to keep track of your Clients' life cycles.</h3>
-            </div>
-            <?php
+            if(ABOUTCLIENTS_DEBUG) error_log('AboutClientsAdminMenu->adminPageFormCallback()');
+            require_once 'menus/callbacks/form-main.php';
         }
 
         /**
-         * Admin Page Contents Setup Callback Method.
+         * Admin Page Form Setup Callback Method.
          *
          * Outputs the setup content for the About Clients admin page.
          * Logs a message to the error log indicating the execution of the method.
          */
-        public function adminPageContentsSetupCallback() {
+        public function adminPageFormSetupCallback() {
             // Log a message to the PHP error log indicating the execution of the method.
-            if(ABOUTCLIENTS_DEBUG) error_log('AboutClientsAdminMenu->adminPageContentsSetupCallback()');
+            if(ABOUTCLIENTS_DEBUG) error_log('AboutClientsAdminMenu->adminPageFormSetupCallback()');
+            require_once 'menus/callbacks/form-setup.php';
+        }
 
-            // Output the setup content for the About Clients admin page.
-            ?>
-            <div class="wrap aboutclients">
-                <h2 class="primary"><?php echo __('About Clients - Setup', 'aboutclients') ?></h2>
-                <form method="post" action="options.php">
-                    <?php settings_fields('aboutclients-se'); // Add necessary hidden fields to the form. ?>
-                    <table class="form-table">
-                        <?php do_settings_fields('aboutclients-se', 'default') ?>
-                    </table>
-                    <?php submit_button(); ?>
-                </form>
-            </div>
-            <?php
+        /**
+         * Admin Page Form Clients Callback Method.
+         *
+         * Outputs the clients content for the About Clients admin page.
+         * Logs a message to the error log indicating the execution of the method.
+         */
+        public function adminPageFormClientsCallback() {
+            // Log a message to the PHP error log indicating the execution of the method.
+            if(ABOUTCLIENTS_DEBUG) error_log('AboutClientsAdminMenu->adminPageFormClientCallback()');
+            require_once 'menus/callbacks/form-clients.php';
         }
 
         /**

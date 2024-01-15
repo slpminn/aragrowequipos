@@ -15,9 +15,7 @@
 	 * This class serves as the main class for the plugin, providing a central point for managing plugin features.
 	 */
 
-	 require_once 'About-Clients-Utilities.php';
-
-	 class AboutClients extends AboutClientsUtilities {
+	 class AboutClients {
 
 		/**
 		 * Constructor Method.
@@ -52,24 +50,35 @@
 
 			if(ABOUTCLIENTS_DEBUG) error_log('AboutClients->registerScripts(()');
 
-			wp_register_style( 'aboutclients', WPFORMS_ZEROSPAM_PLUGIN_URL.'assets/css/style.css' );
-			wp_register_script( 'aboutclients', WPFORMS_ZEROSPAM_PLUGIN_URL.'assets/js/admin/admin-script.js' );
+			wp_register_script( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js' );
+			wp_register_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' );
+
+			wp_register_style( 'ac', ABOUTCLIENTS_PLUGIN_URL.'assets/css/style.css' );
+			wp_register_script( 'ac', ABOUTCLIENTS_PLUGIN_URL.'assets/js/admin/admin-script.js' );
+			wp_register_script( 'ac-clients', ABOUTCLIENTS_PLUGIN_URL.'assets/js/admin/clients-script.js' );
 
 		}
 			
 		public function loadScripts( $hook ) {
 
 			if(ABOUTCLIENTS_DEBUG) error_log('AboutClients->loadScripts(()');
+			var_dump($hook);
 
 			// Load only on ?page= like aboutclients
 			if (is_admin()  === false ) return;
+			
 			// Load style & scripts.
-			wp_enqueue_style( 'aboutclients' );
-			wp_enqueue_script( 'aboutclients' );	
+			wp_enqueue_style( 'bootstrap' );
+			wp_enqueue_script( 'bootstrap' );
+			
+			// Load style & scripts.
+			wp_enqueue_style( 'ac' );
+			wp_enqueue_script( 'ac' );	
+			if (strpos($hook, '-clients')) {
+				wp_enqueue_script( 'ac-clients' );		
+			}
 		}
-			
-			
-
+		
 		/**
 		 * Include files.
 		 *

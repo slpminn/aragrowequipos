@@ -49,12 +49,22 @@ if ( ! defined( 'ABOUTCLIENTS_PLUGIN_URL' ) ) {
 
 // Plugin Root File.
 if ( ! defined( 'ABOUTCLIENTS_PLUGIN_FILE' ) ) {
-	define( 'ABOUTCLIENTS_PLUGIN_FILE', __FILE__ );
+	define( 'ABOUTCLIENTS_PLUGIN_FILE', plugin_dir_path(__FILE__) );
 }
 
 // Plugin Root File.
 if ( ! defined( 'ABOUTCLIENTS_WITH_CLASSES_FILE' ) ) {
 	define( 'ABOUTCLIENTS_WITH_CLASSES_FILE', __FILE__ );
+}
+
+// Plugin Root File.
+if ( ! defined( 'ABOUTCLIENTS_PREFIX' ) ) {
+	define( 'ABOUTCLIENTS_PREFIX', 'ac_' );
+}
+
+// Plugin Root File.
+if ( ! defined( 'ABOUTCLIENTS_ITEMS_PER_PAGE' ) ) {
+	define( 'ABOUTCLIENTS_ITEMS_PER_PAGE', 50 );
 }
 
 if (get_option('aboutclients_debug')) define( 'ABOUTCLIENTS_DEBUG', 1 );
@@ -73,3 +83,16 @@ new AboutClientsAdminMenu(__FILE__);
 // Define the class and the function.
 require_once dirname( __FILE__ ) . '/src/About-Clients.php';
 new AboutClients(__FILE__);
+
+function load_aboutclients_textdomain() {
+	$path = dirname( plugin_basename(__FILE__)) . '/languages';
+	$result = load_plugin_textdomain('aboutclients', 
+		false,
+    	$path);
+
+		if (!$result) {
+			$locale = apply_filters('plugin_locale', get_locale(), dirname( plugin_basename(__FILE__)));
+			die("Could not find $path/" . dirname( plugin_basename(__FILE__)) . "-$locale.mo.");
+		}		
+}
+add_action('plugins_loaded', 'load_aboutclients_textdomain');
