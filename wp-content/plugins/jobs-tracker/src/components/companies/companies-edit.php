@@ -3,9 +3,10 @@
     $table = new CompaniesTable();
     $items['company'] = $table->get_company_data($ID);
     $items['statuses'] = $table->get_all_statuses();
+    $items['industries'] = $table->get_all_industries();
 ?>
 
-<div class="container-fluid mt-3 jobs-tracker style="padding-right: 2rem">
+<div class="container-fluid mt-3 jobstracker style="padding-right: 2rem">
     <div class="row">
         <div class="col-12">
             <div class="wrap jobstracker">

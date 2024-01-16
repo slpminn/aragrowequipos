@@ -66,8 +66,8 @@
 			wp_enqueue_script( 'bootstrap' );
 			
 			// Load style & scripts.
-			wp_enqueue_style( 'js' );
-			wp_enqueue_script( 'js' );	
+			wp_enqueue_style( 'jt' );
+			wp_enqueue_script( 'jt' );	
 			if (strpos($hook, '-companies')) {
 				wp_enqueue_script( 'jt-companies' );		
 			}

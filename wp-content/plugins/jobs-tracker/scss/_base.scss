@@ -32,3 +32,8 @@ img {
     border-style: solid; 
     border-radius: $half-border-radius;     
 }
+
+.option-child {
+    padding-left: $base-padding; /* Adjust the padding as needed */
+    color: $option-child;
+  }

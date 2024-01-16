@@ -8,6 +8,8 @@ $error: #d32752;
 $info: #8B8000;
 $width: 50%;
 
+$option-child: mix( white, $primary, 3 * 10% );
+
 // color palette - Map
 $colors: (
     "primary": $primary,

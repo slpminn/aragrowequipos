@@ -75,6 +75,7 @@ class CompaniesTable extends WP_List_Table
         return array(
             'ID'            => '<span style="font-weight: 500">'.__('Company ID', 'jobstracker').'</span', // Render a checkbox instead of text
             'company_name'   => __('Company Name', 'jobstracker'),
+            'industry_name'   => __('Industry Name', 'jobstracker'),
             'actions'        => __('Actions', 'jobstracker'),   // New dynamic column
             'company_active' => __('Company Active', 'jobstracker'),
             'status_name'   => __('Company Status', 'jobstracker'),
@@ -107,11 +108,6 @@ class CompaniesTable extends WP_List_Table
     function column_company_name($item)
     {
         return "</strong>{$item['company_name']}</strong>";
-    }
-
-    function column_company_status($item)
-    {
-        return __($item['company_status'],'jobstracker');
     }
 
     function column_action($item)
@@ -158,6 +154,7 @@ class CompaniesTable extends WP_List_Table
     {
         return array(
             'company_name'    => array( 'company_name'),
+            'industry_name'    => array( 'industry_name'),
             'company_active'    => array( 'company_active'),
             'status_name' => array( 'status_name')
         );
@@ -230,6 +227,11 @@ class CompaniesTable extends WP_List_Table
         return $item;
     }
 
+    function get_all_industries() {
+        $item = $this->utilitiesAInstance->getIndustries();
+        return $item;
+    }
+
     function get_all_statuses() {
         $item = $this->utilitiesAInstance->getStatuses();
         return $item;
@@ -248,6 +250,20 @@ class CompaniesTable extends WP_List_Table
             </div>
         </div>';
         
+        $form .= '<div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="company_status">'.__( 'Company Industry','jobstracker' ).'</label>
+            <div class="col-sm-10">
+                <select name="industry_status" id="industry_status" class="form-control">
+                    <option>Choose...</option>';
+        foreach($items['industries'] as $industry) {
+            $indent = ($industry['industry_parent'])?'____ ':'';
+            $selected = ($items['company']['company_industry_id'] == $industry['ID'])?'selected':'';
+            $form .= "<option class='$class' value='{$industry['ID']}' $selected>$indent{$industry['industry_name']}</option>";
+        }
+        $form .= '        </select>
+            </div>
+        </div>';
+
         $form .= '<div class="form-group row">
             <label class="col-sm-2 col-form-label" for="company_status">'.__( 'Company Status','jobstracker' ).'</label>
             <div class="col-sm-10">
